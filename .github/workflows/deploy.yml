@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     container: ghcr.io/railwayapp/cli:latest  # usa CLI moderna como contenedor
     env:
-      SVC_ID: fcf32eb3-3229-4b32-8036-4766da1346e5  # remplaza esto con tu Service ID real
+      SVC_ID: 6d0119e4-4d4b-40ba-b844-260e16ff8e80  # remplaza esto con tu Service ID real
       RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN2 }}
     steps:
       - uses: actions/checkout@v3
