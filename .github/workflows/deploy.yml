@@ -2,24 +2,15 @@ name: Deploy to Railway
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    container: ghcr.io/railwayapp/cli:latest  # usa CLI moderna como contenedor
+    env:
+      SVC_ID: fcf32eb3-3229-4b32-8036-4766da1346e5  # remplaza esto con tu Service ID real
+      RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN2 }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Deploy to Railway
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN2 }}
-        run: |
-          npx @railway/cli up
+      - uses: actions/checkout@v3
+      - run: railway up --service=${{ env.SVC_ID }}
