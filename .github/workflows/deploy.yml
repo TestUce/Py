@@ -3,7 +3,7 @@ name: Deploy to Railway
 on:
   push:
     branches:
-      - main  # o tu rama principal
+      - main
 
 jobs:
   deploy:
@@ -19,6 +19,7 @@ jobs:
           node-version: '18'
 
       - name: Deploy to Railway
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: |
-          npx @railway/cli login --token ${{ secrets.RAILWAY_TOKEN }}
           npx @railway/cli up
