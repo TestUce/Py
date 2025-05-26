@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     container: ghcr.io/railwayapp/cli:latest  # usa CLI moderna como contenedor
     env:
-      RAILWAY_TOKEN: ${{ secrets.RA }}
+      RAILWAY_TOKEN: ${{ secrets.RAI }}
     steps:
       - uses: actions/checkout@v3
       - run: railway up --service=${{ env.SVC_ID }}
